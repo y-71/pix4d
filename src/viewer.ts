@@ -1,7 +1,7 @@
 import { PerspectiveCamera, Scene, WebGLRenderer } from "three";
 import { PointCloudOctree, Potree } from "@pnext/three-loader";
 import { CameraControls } from "./camera-controls";
-
+import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 export class Viewer {
   /**
    * The element where we will insert our canvas.
@@ -23,6 +23,7 @@ export class Viewer {
    * Controls which update the position of the camera.
    */
   private cameraControls = new CameraControls(this.camera);
+  private orbitControls;
   /**
    * Out potree instance which handles updating point clouds, keeps track of loaded nodes, etc.
    */
@@ -53,6 +54,9 @@ export class Viewer {
 
     this.targetEl = targetEl;
     targetEl.appendChild(this.renderer.domElement);
+    this.orbitControls = new OrbitControls( this.camera, this.renderer.domElement );
+
+    this.camera.position.set( 0, 1, 10 );
 
     this.resize();
     window.addEventListener("resize", this.resize);
@@ -111,8 +115,8 @@ export class Viewer {
   update(dt: number): void {
     // Alternatively, you could use Three's OrbitControls or any other
     // camera control system.
-    this.cameraControls.update(dt);
-
+    console.log(this.orbitControls)
+    this.orbitControls.update();
     // This is where most of the potree magic happens. It updates the
     // visiblily of the octree nodes based on the camera frustum and it
     // triggers any loads/unloads which are necessary to keep the number

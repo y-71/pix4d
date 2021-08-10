@@ -4,7 +4,7 @@ import { PerspectiveCamera, Vector3 } from "three";
  * Simple camera controls which just make the camera spin around a target position.
  */
 export class CameraControls {
-  rotationSpeed = 0.001;
+  rotationSpeed = 0.0001;
   distance = 10.0;
   target = new Vector3();
   private angle = 0.0;
