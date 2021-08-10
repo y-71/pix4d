@@ -3,6 +3,11 @@ import { Viewer } from "./viewer";
 const viewer = new Viewer();
 viewer.initialize(document.getElementById("target"));
 
+const opacitySlider = document.getElementById("opacitySlider");
+const pointSizeSlider = document.getElementById("pointSizeSlider");
+const pointShapeSlider = document.getElementById("pointShapeSlider");
+
+
 viewer
   .load(
     "cloud.js",
@@ -16,6 +21,22 @@ viewer
     // The point cloud octree already comes with a material which
     // can be customized directly. Here we just set the size of the
     // points.
-    pco.material.size = 1.5;
+    pco.material.opacity = opacitySlider.value/100;
+    pco.material.size = pointSizeSlider.value/10;
+    pco.material.shape = pointShapeSlider.value;
+    opacitySlider.addEventListener("change",
+      ()=>{
+          pco.material.opacity = opacitySlider.value/100;
+          });
+    pointSizeSlider.addEventListener("change",
+      ()=>{
+        pco.material.size = pointSizeSlider.value/10;
+        });
+
+    pointShapeSlider.addEventListener("change",
+    ()=>{
+      pco.material.shape = pointShapeSlider.value;
+      });
+
   })
   .catch(err => console.error(err));

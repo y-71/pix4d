@@ -38203,6 +38203,9 @@ var viewer_1 = require("./viewer");
 
 var viewer = new viewer_1.Viewer();
 viewer.initialize(document.getElementById("target"));
+var opacitySlider = document.getElementById("opacitySlider");
+var pointSizeSlider = document.getElementById("pointSizeSlider");
+var pointShapeSlider = document.getElementById("pointShapeSlider");
 viewer.load("cloud.js", "https://cdn.rawgit.com/potree/potree/develop/pointclouds/lion_takanawa/").then(function (pco) {
   // Make the lion shows up at the center of the screen.
   pco.translateX(-1);
@@ -38210,7 +38213,18 @@ viewer.load("cloud.js", "https://cdn.rawgit.com/potree/potree/develop/pointcloud
   // can be customized directly. Here we just set the size of the
   // points.
 
-  pco.material.size = 1.5;
+  pco.material.opacity = opacitySlider.value / 100;
+  pco.material.size = pointSizeSlider.value / 10;
+  pco.material.shape = pointShapeSlider.value;
+  opacitySlider.addEventListener("change", function () {
+    pco.material.opacity = opacitySlider.value / 100;
+  });
+  pointSizeSlider.addEventListener("change", function () {
+    pco.material.size = pointSizeSlider.value / 10;
+  });
+  pointShapeSlider.addEventListener("change", function () {
+    pco.material.shape = pointShapeSlider.value;
+  });
 }).catch(function (err) {
   return console.error(err);
 });
