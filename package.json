@@ -1,0 +1,20 @@
+{
+  "name": "vanilla",
+  "version": "1.0.0",
+  "description": "Simple example for loading a point cloud with three-potree-loader.",
+  "main": "index.html",
+  "scripts": {
+    "start": "parcel index.html --open",
+    "build": "parcel build index.html"
+  },
+  "dependencies": {
+    "@pnext/three-loader": "0.2.4",
+    "@types/three": "0.129.0",
+    "three": "0.129.0"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.6.1",
+    "typescript": "^4.3.5"
+  },
+  "keywords": []
+}

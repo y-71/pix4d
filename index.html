@@ -1,0 +1,46 @@
+<html>
+
+<head>
+	<title>Three Potree Loader</title>
+	<meta charset="UTF-8" />
+
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+		}
+		.page{
+			display: flex;
+			height: 100%;
+		}
+		.column-flexbox{
+			display: flex;
+			flex-direction: column;
+
+			justify-content: center;
+		}
+		#target {
+			width: 50%;
+			height: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="page">
+		<div id="target"></div>
+		<div class="column-flexbox">
+
+			<label>Opacity:</label>
+			<input id = "opacitySlider" type="range" min="1" max="100" value="50">
+			<label>Point Size:</label>
+			<input id = "pointSizeSlider" type="range" min="1" max="100" value="50">
+			<label>Point Shape:</label>
+			<input id = "pointShapeSlider" type="range" min="1" max="3" value="2">
+		</div>
+	</div>
+	<script src="src/index.ts"></script>
+
+</body>
+
+</html>
