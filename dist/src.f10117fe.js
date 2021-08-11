@@ -39016,7 +39016,6 @@ var Viewer = function () {
   Viewer.prototype.update = function (dt) {
     // Alternatively, you could use Three's OrbitControls or any other
     // camera control system.
-    console.log(this.orbitControls);
     this.orbitControls.update(); // This is where most of the potree magic happens. It updates the
     // visiblily of the octree nodes based on the camera frustum and it
     // triggers any loads/unloads which are necessary to keep the number
@@ -39055,7 +39054,8 @@ var pointShapeSlider = document.getElementById("pointShapeSlider");
 viewer.load("cloud.js", "https://cdn.rawgit.com/potree/potree/develop/pointclouds/lion_takanawa/").then(function (pco) {
   // Make the lion shows up at the center of the screen.
   pco.translateX(-1);
-  pco.rotateX(-Math.PI / 2); // The point cloud octree already comes with a material which
+  pco.rotateX(-Math.PI / 2);
+  console.log(pco); // The point cloud octree already comes with a material which
   // can be customized directly. Here we just set the size of the
   // points.
 

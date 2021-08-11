@@ -1,4 +1,5 @@
 import { Viewer } from "./viewer";
+import {MeshStandardMaterial} from 'three';
 
 const viewer = new Viewer();
 viewer.initialize(document.getElementById("target"));
@@ -17,10 +18,11 @@ viewer
     // Make the lion shows up at the center of the screen.
     pco.translateX(-1);
     pco.rotateX(-Math.PI / 2);
-
+    console.log(pco)
     // The point cloud octree already comes with a material which
     // can be customized directly. Here we just set the size of the
     // points.
+
     pco.material.opacity = opacitySlider.value/100;
     pco.material.size = pointSizeSlider.value/10;
     pco.material.shape = pointShapeSlider.value;
@@ -38,5 +40,5 @@ viewer
       pco.material.shape = pointShapeSlider.value;
       });
 
-  })
+    })
   .catch(err => console.error(err));

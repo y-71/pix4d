@@ -55,7 +55,6 @@ export class Viewer {
     this.targetEl = targetEl;
     targetEl.appendChild(this.renderer.domElement);
     this.orbitControls = new OrbitControls( this.camera, this.renderer.domElement );
-
     this.camera.position.set( 0, 1, 10 );
 
     this.resize();
@@ -115,7 +114,6 @@ export class Viewer {
   update(dt: number): void {
     // Alternatively, you could use Three's OrbitControls or any other
     // camera control system.
-    console.log(this.orbitControls)
     this.orbitControls.update();
     // This is where most of the potree magic happens. It updates the
     // visiblily of the octree nodes based on the camera frustum and it
